@@ -115,9 +115,6 @@
       color: #333;
       flex: 1;
     }
-    .delete-btn:hover{
-      background: #c82333;
-    }
     .delete-btn{
       background: #dc3545;
       color: white;
@@ -127,6 +124,9 @@
       cursor: pointer;
       font-size: 14px;
       transition: background-color 0.3s ease;
+    }
+    .delete-btn:hover{
+      background: #94000f;
     }
     .empty-state{
       text-align: center;
