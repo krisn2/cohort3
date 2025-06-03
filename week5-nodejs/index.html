@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetching</title>
+</head>
+<body>
+    <script>
+        async function getData(params) {
+            const response = await fetch("")
+            const data = await response.json();
+            document.write(data.title);
+        }
+        getData();
+
+    </script>
+</body>
+</html>
