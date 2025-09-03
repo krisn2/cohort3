@@ -1,10 +1,21 @@
 
 import {  createContext, useEffect, useState, useContext } from "react";
 
-const BulbContext = createContext();
+const BulbContext = createContext(); // createContext // similar to initializing new user define type 
+const countContext = createContext() ;
 
+function CountProvider({ children }){
+    const [count, setCount] = useState(0);
+
+    return <countContext.Provider value={{count:count, setCount:setCount}}>
+      {children}
+    </countContext.Provider>
+}
+
+// fucntion that wrap the global state 
 function BulbProvider({ children }) {
   const [bulbOn, setBulbon]= useState(true);
+
 
   return (
     <BulbContext.Provider value={{ bulbOn: bulbOn, setBulbon: setBulbon}} >
@@ -53,6 +64,50 @@ function App() {
      <BulbProvider>
      <Light/>
      </BulbProvider>
+
+     <CountProvider>
+      <Value/>
+      <Increase />
+      <Decrease />
+     </CountProvider>
+    </div>
+  )
+}
+
+function Decrease() {
+  let setCount = useContext(countContext).setCount;
+
+  function dec() {
+    setCount(c => c - 1);
+  }
+  return (
+    <div>
+      <button onClick={dec}>Decrease</button>
+    </div>
+  )
+}
+
+function Increase() {
+
+  let setCount = useContext(countContext).setCount;
+
+  function inc() {
+    setCount(c => c + 1);
+  }
+
+  return(
+    <div>
+      <button onClick={inc}>Increase</button>
+    </div>
+  )
+}
+
+function Value () {
+  let count = useContext(countContext).count;
+
+  return (
+    <div>
+      <h1>{count}</h1>
     </div>
   )
 }
