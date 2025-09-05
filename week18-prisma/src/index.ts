@@ -15,4 +15,18 @@ async function CreateUser() {
 })
 }
 
+async function getUserWithTodo() {
+    let user = await client.user.findFirst({
+        where: {
+            id: 1
+        },
+        include: {
+            todos:true
+        }
+    })
+    console.log(user)
+}
+
 CreateUser();
+
+getUserWithTodo();

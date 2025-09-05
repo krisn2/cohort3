@@ -23,4 +23,18 @@ function CreateUser() {
         });
     });
 }
+function getUserWithTodo() {
+    return __awaiter(this, void 0, void 0, function* () {
+        let user = yield client.user.findFirst({
+            where: {
+                id: 1
+            },
+            include: {
+                todos: true
+            }
+        });
+        console.log(user);
+    });
+}
 CreateUser();
+getUserWithTodo();
